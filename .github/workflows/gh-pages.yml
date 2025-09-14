@@ -13,14 +13,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: quarto-dev/quarto-actions/setup@v2
 
-      # (Optional) If your QMDs execute Python/R, set them up here
+      # Keep if you might execute Python later; otherwise you can remove it.
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # Render and publish (creates gh-pages if missing)
-      - uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
+      # 1) Render site, but DO NOT execute code chunks (avoids package errors)
+      - name: Render site
+        run: quarto render --no-execute
+
+      # 2) Publish to gh-pages (creates the branch if it doesn't exist)
+      - name: Publish to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          quarto publish gh-pages --no-prompt
