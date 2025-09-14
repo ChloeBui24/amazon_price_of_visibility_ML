@@ -1,0 +1,8 @@
+---
+title: "The Price of Visibility"
+---
+
+Welcome! This site hosts the capstone analysis and manuscript.
+
+- Read the full paper: [capstone](capstone.qmd)
+- Or use the navbar to browse each section directly.
