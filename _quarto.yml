@@ -1,14 +1,31 @@
 project:
-  type: manuscript
-  output-dir: _output
-  resources:
-    - "_*.qmd"
+  type: website
 
-manuscript:
-  article: capstone.qmd
+website:
+  title: "The Price of Visibility (Amazon H&B)"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: capstone.qmd
+        text: Paper
+      - href: _01_intro.qmd
+        text: Introduction
+      - href: _02_background.qmd
+        text: Background
+      - href: _03_data.qmd
+        text: Data
+      - href: _04_analysis.qmd
+        text: Analysis
+      - href: _05_results.qmd
+        text: Results
+      - href: _06_conclusions.qmd
+        text: Conclusions
+      - href: _07_references.qmd
+        text: References
 
-format: 
+format:
   html:
-    theme:
-      light: lightly
-      dark: darkly
+    theme: cosmo
+    toc: true
+    code-copy: true
