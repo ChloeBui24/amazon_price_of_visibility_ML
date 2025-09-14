@@ -1,0 +1,26 @@
+name: Publish Quarto site to gh-pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+
+      # (Optional) If your QMDs execute Python/R, set them up here
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Render and publish (creates gh-pages if missing)
+      - uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
